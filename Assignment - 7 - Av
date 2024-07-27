@@ -1,0 +1,92 @@
+# Q1. What is Abstraction in OOPs? Explain with an example.
+# Abstraction in Object-Oriented Programming (OOP) is the concept of hiding the complex implementation details and showing only the essential features of an object. It helps to reduce complexity by focusing on high-level operations rather than low-level details.
+
+# Example:
+from abc import ABC, abstractmethod
+
+class Shape(ABC):  # Abstract class
+    @abstractmethod
+    def area(self):
+        pass  # Abstract method with no implementation
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+
+# Creating an object of Circle and using it
+circle = Circle(5)
+print(circle.area())  # Output: 78.5
+
+# Q2. Differentiate between Abstraction and Encapsulation. Explain with an example.
+# Abstraction is the concept of hiding the complex implementation details and showing only the essential features of an object. Encapsulation is the concept of bundling data and methods that operate on the data within a single unit (class) and restricting access to some of the object's components.
+
+# Example of Abstraction:
+# Using abstract class and methods to provide a common interface
+class Animal(ABC):
+    @abstractmethod
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Bark"
+
+# Example of Encapsulation:
+# Using private variables and methods to restrict access
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private attribute
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+
+# Creating an object of BankAccount
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())  # Output: 1500
+# Access to __balance is restricted, can only be accessed via get_balance()
+
+# Q3. What is abc module in Python? Why is it used?
+# The `abc` module in Python provides infrastructure for defining Abstract Base Classes (ABCs). It is used to define abstract classes and methods that must be implemented by subclasses. It helps enforce a consistent interface and can prevent the creation of instances of abstract classes.
+
+# Example:
+from abc import ABC, abstractmethod
+
+class MyAbstractClass(ABC):
+    @abstractmethod
+    def my_method(self):
+        pass
+
+# Q4. How can we achieve data abstraction?
+# Data abstraction can be achieved through the use of abstract classes, methods, and interfaces. By defining abstract methods and classes, we can specify a common interface while hiding the implementation details. This ensures that subclasses provide specific implementations for these methods while adhering to a common interface.
+
+# Example:
+class Vehicle(ABC):
+    @abstractmethod
+    def start(self):
+        pass
+
+class Car(Vehicle):
+    def start(self):
+        return "Car is starting"
+
+# Q5. Can we create an instance of an abstract class? Explain your answer.
+# No, we cannot create an instance of an abstract class in Python. An abstract class is meant to be a blueprint for other classes and contains abstract methods that must be implemented by subclasses. Trying to instantiate an abstract class directly will result in a TypeError.
+
+# Example:
+from abc import ABC, abstractmethod
+
+class AbstractClass(ABC):
+    @abstractmethod
+    def do_something(self):
+        pass
+
+# Attempting to create an instance of AbstractClass will raise an error
+# obj = AbstractClass()  # TypeError: Can't instantiate abstract class AbstractClass with abstract methods do_something
