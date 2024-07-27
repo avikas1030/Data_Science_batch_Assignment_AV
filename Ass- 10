@@ -1,0 +1,38 @@
+# Q1. What is multithreading in Python? Why is it used? Name the module used to handle threads in Python.
+# Multithreading in Python allows multiple threads to run concurrently within a single process, enabling more efficient CPU utilization and improved performance for I/O-bound tasks. The `threading` module is used to handle threads in Python.
+
+# Q2. Why is the threading module used? Write the use of the following functions:
+# - activeCount: Returns the number of Thread objects currently alive.
+# - currentThread: Returns the current Thread object, corresponding to the caller’s thread.
+# - enumerate: Returns a list of all Thread objects currently alive.
+
+# Q3. Explain the following functions:
+# - run: Defines the thread’s activity. It is overridden in a subclass of Thread.
+# - start: Starts a thread’s activity by calling the `run` method in a new thread.
+# - join: Waits for a thread to terminate.
+# - isAlive: Checks if the thread is still alive.
+
+# Q4. Write a Python program to create two threads. Thread one must print the list of squares and thread two must print the list of cubes.
+import threading
+
+def print_squares():
+    print([i ** 2 for i in range(1, 6)])
+
+def print_cubes():
+    print([i ** 3 for i in range(1, 6)])
+
+thread1 = threading.Thread(target=print_squares)
+thread2 = threading.Thread(target=print_cubes)
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+
+# Q5. State advantages and disadvantages of multithreading.
+# Advantages: Improved performance for I/O-bound tasks, better CPU utilization, easier to manage concurrent operations.
+# Disadvantages: Complexity in code, potential for race conditions, and issues with thread safety.
+
+# Q6. Explain deadlocks and race conditions.
+# Deadlocks occur when two or more threads are blocked forever, waiting for each other to release resources. Race conditions happen when multiple threads access shared resources simultaneously and the outcome depends on the sequence of execution.
