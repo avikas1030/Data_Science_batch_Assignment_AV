@@ -1,0 +1,61 @@
+# Q1. What is a database? Differentiate between SQL and NoSQL databases.
+# A database is an organized collection of structured information or data, typically stored electronically in a computer system. SQL databases use a structured schema with tables, rows, and columns, supporting complex queries with SQL. NoSQL databases are more flexible, often schema-less, and use various data models (document, key-value, column-family, graph) suited for unstructured data and scalable applications.
+
+# Q2. What is DDL? Explain why CREATE, DROP, ALTER, and TRUNCATE are used with an example.
+# DDL (Data Definition Language) is used to define and manage database schema objects. 
+# CREATE: Used to create new tables or databases. Example: `CREATE TABLE students (id INT, name VARCHAR(50));`
+# DROP: Used to delete tables or databases. Example: `DROP TABLE students;`
+# ALTER: Used to modify existing database objects. Example: `ALTER TABLE students ADD COLUMN age INT;`
+# TRUNCATE: Used to delete all rows from a table but keep the table structure. Example: `TRUNCATE TABLE students;`
+
+# Q3. What is DML? Explain INSERT, UPDATE, and DELETE with an example.
+# DML (Data Manipulation Language) is used to manipulate and manage data within database tables.
+# INSERT: Used to add new rows to a table. Example: `INSERT INTO students (id, name) VALUES (1, 'John Doe');`
+# UPDATE: Used to modify existing rows in a table. Example: `UPDATE students SET name = 'Jane Doe' WHERE id = 1;`
+# DELETE: Used to remove rows from a table. Example: `DELETE FROM students WHERE id = 1;`
+
+# Q4. What is DQL? Explain SELECT with an example.
+# DQL (Data Query Language) is used to query and retrieve data from database tables.
+# SELECT: Used to query data from a table. Example: `SELECT * FROM students WHERE name = 'Jane Doe';`
+
+# Q5. Explain Primary Key and Foreign Key.
+# Primary Key: A unique identifier for each record in a table, ensuring that no two rows have the same key value. Example: `id` in a `students` table.
+# Foreign Key: A field (or collection of fields) in one table that uniquely identifies a row of another table. It establishes a relationship between tables. Example: `student_id` in an `enrollments` table that refers to `id` in the `students` table.
+
+# Q6. Write a Python code to connect MySQL to Python. Explain the cursor() and execute() method.
+import mysql.connector
+
+# Connecting to MySQL
+conn = mysql.connector.connect(
+    host="localhost",
+    user="yourusername",
+    password="yourpassword",
+    database="yourdatabase"
+)
+
+# Creating a cursor object
+cursor = conn.cursor()
+
+# Executing a query
+cursor.execute("SELECT * FROM students")
+
+# Fetching results
+results = cursor.fetchall()
+for row in results:
+    print(row)
+
+# Closing the connection
+conn.close()
+
+# cursor() method creates a cursor object used to interact with the database.
+# execute() method runs a SQL query using the cursor object.
+
+# Q7. Give the order of execution of SQL clauses in an SQL query.
+# 1. FROM
+# 2. JOIN
+# 3. WHERE
+# 4. GROUP BY
+# 5. HAVING
+# 6. SELECT
+# 7. ORDER BY
+# 8. LIMIT
