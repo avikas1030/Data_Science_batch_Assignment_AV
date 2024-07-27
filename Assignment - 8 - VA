@@ -1,0 +1,101 @@
+# Q1. What is an Exception in Python? Write the difference between Exceptions and Syntax Errors
+# An Exception in Python is an event that occurs during the execution of a program that disrupts the normal flow of the program's instructions. Exceptions can be handled using try-except blocks. 
+# Syntax Errors occur when there is an incorrect syntax in the code which prevents the code from being compiled or executed. They are detected before the program runs, while Exceptions are detected during runtime.
+
+# Example:
+# Syntax Error: 
+# print("Hello"  # Missing closing parenthesis
+
+# Exception: 
+try:
+    result = 10 / 0  # Division by zero
+except ZeroDivisionError as e:
+    print("An error occurred:", e)  # Output: An error occurred: division by zero
+
+# Q2. What happens when an exception is not handled? Explain with an example
+# When an exception is not handled, it propagates up the call stack and can terminate the program if not caught. The default behavior is to display an error message and stop the program's execution.
+
+# Example:
+def divide(a, b):
+    return a / b
+
+# Calling the function with a zero divisor
+result = divide(10, 0)  # This will raise a ZeroDivisionError and terminate the program
+
+# Q3. Which Python statements are used to catch and handle exceptions? Explain with an example
+# Python uses `try`, `except`, `else`, `finally`, and `raise` statements to handle exceptions. 
+# - `try` block contains code that may raise an exception.
+# - `except` block handles the exception if it occurs.
+# - `else` block contains code that runs if no exception occurs.
+# - `finally` block contains code that runs no matter what, whether an exception occurred or not.
+# - `raise` is used to explicitly raise an exception.
+
+# Example:
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Invalid input! Please enter an integer.")
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+else:
+    print("The result is", result)
+finally:
+    print("Execution completed.")
+
+# Q4. Explain with an example: try, except, else, finally, raise
+# Example:
+def calculate_inverse(number):
+    try:
+        if number == 0:
+            raise ValueError("Cannot calculate the inverse of zero.")
+        inverse = 1 / number
+    except ValueError as e:
+        print("Error:", e)
+    else:
+        print("The inverse is:", inverse)
+    finally:
+        print("Function execution completed.")
+
+# Test the function
+calculate_inverse(0)  # Raises ValueError
+calculate_inverse(2)  # Calculates inverse
+
+# Q5. What are Custom Exceptions in Python? Why do we need Custom Exceptions? Explain with an example
+# Custom Exceptions are user-defined exception classes that inherit from the built-in Exception class. They are used to represent specific error conditions in a program that are not covered by built-in exceptions.
+# Custom Exceptions help make the code more readable and provide clearer error messages.
+
+# Example:
+class NegativeNumberError(Exception):
+    def __init__(self, message="Negative number is not allowed"):
+        self.message = message
+        super().__init__(self.message)
+
+def sqrt(num):
+    if num < 0:
+        raise NegativeNumberError()
+    return num ** 0.5
+
+# Test the function
+try:
+    result = sqrt(-9)
+except NegativeNumberError as e:
+    print(e)  # Output: Negative number is not allowed
+
+# Q6. Create a custom exception class. Use this class to handle an exception.
+
+class InvalidAgeError(Exception):
+    def __init__(self, message="Age must be a positive integer"):
+        self.message = message
+        super().__init__(self.message)
+
+def set_age(age):
+    if age < 0:
+        raise InvalidAgeError()
+    return age
+
+# Test the function
+try:
+    age = set_age(-5)
+except InvalidAgeError as e:
+    print(e)  # Output: Age must be a positive integer
