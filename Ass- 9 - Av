@@ -1,0 +1,70 @@
+# Q1. Explain why we have to use the Exception class while creating a Custom Exception.
+# The Exception class is the base class for all built-in exceptions in Python. By inheriting from the Exception class, custom exceptions ensure that they are compatible with the existing exception handling mechanisms in Python. This allows custom exceptions to be caught using try-except blocks and provides a consistent way to handle errors.
+
+# Example of creating a custom exception:
+class CustomError(Exception):
+    def __init__(self, message="This is a custom error"):
+        self.message = message
+        super().__init__(self.message)
+
+# Q2. Write a Python program to print Python Exception Hierarchy.
+import traceback
+
+def print_exception_hierarchy():
+    exc_class = Exception
+    while exc_class is not None:
+        print(exc_class.__name__)
+        exc_class = exc_class.__bases__[0] if exc_class.__bases__ else None
+
+print_exception_hierarchy()
+# Output will show a hierarchy of Python exceptions, starting from the base Exception class.
+
+# Q3. What errors are defined in the ArithmeticError class? Explain any two with an example.
+# ArithmeticError is the base class for all errors related to arithmetic operations. Its common subclasses include ZeroDivisionError, OverflowError, and FloatingPointError.
+
+# Example of ZeroDivisionError:
+try:
+    result = 1 / 0
+except ZeroDivisionError as e:
+    print("ZeroDivisionError:", e)  # Output: ZeroDivisionError: division by zero
+
+# Example of OverflowError:
+try:
+    import math
+    result = math.exp(1000)
+except OverflowError as e:
+    print("OverflowError:", e)  # Output: OverflowError: math range error
+
+# Q4. Why LookupError class is used? Explain with an example KeyError and IndexError.
+# LookupError is the base class for errors raised when a lookup operation fails. It is inherited by KeyError and IndexError.
+
+# Example of KeyError:
+my_dict = {'key1': 'value1'}
+try:
+    value = my_dict['non_existent_key']
+except KeyError as e:
+    print("KeyError:", e)  # Output: KeyError: 'non_existent_key'
+
+# Example of IndexError:
+my_list = [1, 2, 3]
+try:
+    value = my_list[5]
+except IndexError as e:
+    print("IndexError:", e)  # Output: IndexError: list index out of range
+
+# Q5. Explain ImportError. What is ModuleNotFoundError?
+# ImportError is raised when an imported module cannot be found or loaded. ModuleNotFoundError is a subclass of ImportError and is specifically raised when a module or package is not found.
+
+# Example of ImportError:
+try:
+    import non_existent_module
+except ImportError as e:
+    print("ImportError:", e)  # Output: ImportError: No module named 'non_existent_module'
+
+# Example of ModuleNotFoundError:
+try:
+    import non_existent_module
+except ModuleNotFoundError as e:
+    print("ModuleNotFoundError:", e)  # Output: ModuleNotFoundError: No module named 'non_existent_module'
+
+
