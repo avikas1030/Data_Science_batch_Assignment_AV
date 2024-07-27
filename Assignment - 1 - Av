@@ -1,0 +1,118 @@
+Q1. Create one variable containing following type of data:
+(i) string
+(ii) list
+(iii) float
+(iv) tuple
+Q2. Given are some following variables containing data:
+(i) var1 = ‘ ‘
+(ii) var2 = ‘[ DS , ML , Python]’
+(iii) var3 = [ ‘DS’ , ’ML’ , ‘Python’ ]
+(iv) var4 = 1.
+What will be the data type of the above given variable.
+Q3. Explain the use of the following operators using an example:
+(i) /
+(ii) %
+(iii) //
+(iv) **
+Q4. Create a list of length 10 of your choice containing multiple types of data. Using for loop print the
+element and its data type.
+Q5. Using a while loop, verify if the number A is purely divisible by number B and if so then how many
+times it can be divisible.
+Q6. Create a list containing 25 int type data. Using for loop and if-else condition print if the element is
+divisible by 3 or not.
+Q7. What do you understand about mutable and immutable data types? Give examples for both showing
+this property.
+
+//Answer 1
+# (i) String
+string_var = "Hello, World!"
+
+# (ii) List
+list_var = [1, 2, 3, 4, 5]
+
+# (iii) Float
+float_var = 3.14
+
+# (iv) Tuple
+tuple_var = (10, 20, 30)
+
+//Ans -2 
+# (i) var1 = ‘ ‘
+var1 = ' '
+# Data type: String
+
+# (ii) var2 = ‘[ DS , ML , Python]’
+var2 = '[ DS , ML , Python]'
+# Data type: String (it is a string representation of a list)
+
+# (iii) var3 = [ ‘DS’ , ’ML’ , ‘Python’ ]
+var3 = ['DS', 'ML', 'Python']
+# Data type: List
+
+# (iv) var4 = 1.
+var4 = 1.0
+# Data type: Float
+
+//Ans - 3
+# (i) /
+# Division operator. It returns a float result of the division.
+result = 10 / 3
+# Example: 10 / 3 = 3.3333333333333335
+
+# (ii) %
+# Modulus operator. It returns the remainder of the division.
+result = 10 % 3
+# Example: 10 % 3 = 1
+
+# (iii) //
+# Floor division operator. It returns the largest integer less than or equal to the result of the division.
+result = 10 // 3
+# Example: 10 // 3 = 3
+
+# (iv) **
+# Exponentiation operator. It returns the result of raising the number to the power of another number.
+result = 2 ** 3
+# Example: 2 ** 3 = 8
+
+//ANs - 4
+mixed_list = [10, 'Hello', 3.14, True, [1, 2, 3], (4, 5), {'key': 'value'}, None, 7.0, 'Python']
+
+for element in mixed_list:
+    print(f'Element: {element}, Type: {type(element)}')
+
+//Ans - 5
+A = 100
+B = 5
+
+count = 0
+while A % B == 0:
+    A = A // B
+    count += 1
+
+print(f'The number can be divided {count} times by {B}.')
+
+//ans - 6
+int_list = [i for i in range(1, 26)]
+
+for element in int_list:
+    if element % 3 == 0:
+        print(f'{element} is divisible by 3.')
+    else:
+        print(f'{element} is not divisible by 3.')
+
+//ans - 7
+# Example of mutable data type (list)
+mutable_list = [1, 2, 3]
+mutable_list.append(4)  # The list is modified
+print(mutable_list)  # Output: [1, 2, 3, 4]
+
+# Example of immutable data type (string)
+immutable_string = "Hello"
+new_string = immutable_string.replace("H", "J")  # A new string is created
+print(new_string)  # Output: "Jello"
+print(immutable_string)  # Output: "Hello"
+
+# Example of immutable data type (tuple)
+immutable_tuple = (1, 2, 3)
+# immutable_tuple[1] = 4  # This will raise a TypeError
+
