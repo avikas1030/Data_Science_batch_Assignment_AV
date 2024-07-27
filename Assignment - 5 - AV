@@ -1,0 +1,74 @@
+# Q1. Create a vehicle class with an init method having instance variables as name_of_vehicle, max_speed, and average_of_vehicle.
+class Vehicle:
+    def __init__(self, name_of_vehicle, max_speed, average_of_vehicle):
+        self.name_of_vehicle = name_of_vehicle
+        self.max_speed = max_speed
+        self.average_of_vehicle = average_of_vehicle
+
+# Q2. Create a child class car from the vehicle class created in Que 1, which will inherit the vehicle class. Create a method named seating_capacity which takes capacity as an argument and returns the name of the vehicle and its seating capacity.
+class Car(Vehicle):
+    def seating_capacity(self, capacity):
+        return f"{self.name_of_vehicle} has a seating capacity of {capacity}."
+
+# Example usage
+my_car = Car("Toyota Corolla", 180, 15)
+print(my_car.seating_capacity(5))
+# Output: Toyota Corolla has a seating capacity of 5.
+
+# Q3. What is multiple inheritance? Write a python code to demonstrate multiple inheritance.
+# Multiple inheritance is when a class inherits from more than one base class.
+
+class Engine:
+    def engine_type(self):
+        return "Petrol"
+
+class Wheels:
+    def wheel_count(self):
+        return 4
+
+class Car(Engine, Wheels):
+    def car_details(self):
+        return f"Engine type: {self.engine_type()}, Wheel count: {self.wheel_count()}"
+
+# Example usage
+my_car = Car()
+print(my_car.car_details())
+# Output: Engine type: Petrol, Wheel count: 4
+
+# Q4. What are getter and setter in python? Create a class and create a getter and a setter method in this class.
+# Getters and setters are methods used to access and modify private attributes.
+
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    # Getter method
+    def get_name(self):
+        return self._name
+
+    # Setter method
+    def set_name(self, name):
+        self._name = name
+
+# Example usage
+person = Person("John Doe")
+print(person.get_name())  # Output: John Doe
+person.set_name("Jane Doe")
+print(person.get_name())  # Output: Jane Doe
+
+# Q5. What is method overriding in python? Write a python code to demonstrate method overriding.
+# Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass.
+
+class Animal:
+    def make_sound(self):
+        return "Some generic sound"
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Bark"
+
+# Example usage
+generic_animal = Animal()
+dog = Dog()
+print(generic_animal.make_sound())  # Output: Some generic sound
+print(dog.make_sound())  # Output: Bark
